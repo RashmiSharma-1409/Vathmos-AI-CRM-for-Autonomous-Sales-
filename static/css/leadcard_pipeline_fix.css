@@ -1,0 +1,195 @@
+/* ══════════════════════════════════════════════════════════════════
+   VATHMOS — Lead Card + Pipeline Running Mobile Fix
+   Add to the BOTTOM of dashboard.css
+   (or append to your existing mobile-responsive.css)
+   ══════════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────────────────────────────
+   FIX 1: LEAD CARDS — overflow hidden was clipping tags + event text
+────────────────────────────────────────────────────────────────── */
+
+/* Remove overflow:hidden that clips bottom tags */
+.lead-card {
+  overflow: visible;
+}
+
+/* Ensure the left accent bar still clips correctly */
+.lead-card::before {
+  border-radius: 3px 0 0 3px;
+}
+
+/* Company name: don't let it push score badge off screen */
+.lc-company {
+  min-width: 0;           /* allow flexbox truncation */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+/* Event text: allow wrapping, never truncate */
+.lc-event {
+  white-space: normal;
+  overflow: visible;
+  word-break: break-word;
+}
+
+/* Tags row: always wrap, never overflow */
+.lc-bottom {
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+/* Tags themselves: don't shrink to nothing */
+.lc-tag {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   FIX 2: PIPELINE RUNNING STATE — step pills + log line overflow
+────────────────────────────────────────────────────────────────── */
+
+/* Step pills container: horizontal scroll, never wrap */
+.running-steps {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  gap: 8px;
+  padding-bottom: 8px;
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE */
+}
+.running-steps::-webkit-scrollbar {
+  display: none;               /* Chrome/Safari */
+}
+
+/* Individual step pills: don't shrink */
+.step-pill {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: default;
+  transition: all 0.2s var(--ease);
+}
+
+/* Log line: stack time / event / detail vertically on mobile */
+.log-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.log-time {
+  font-size: 10px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.log-event {
+  font-size: 11px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.log-detail {
+  font-size: 11px;
+  opacity: 0.75;
+  word-break: break-word;
+  min-width: 0;
+  flex: 1;
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   MOBILE-SPECIFIC OVERRIDES (≤ 600px)
+────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+
+  /* Lead cards: slightly larger touch target, tighter padding */
+  .lead-card {
+    padding: 12px 12px 10px;
+    margin-bottom: 8px;
+  }
+
+  /* Company name: slightly smaller but readable */
+  .lc-company {
+    font-size: 13px;
+  }
+
+  /* Event text: smaller and wrappable */
+  .lc-event {
+    font-size: 11px;
+    margin-bottom: 6px;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;       /* clip to 2 lines max */
+  }
+
+  /* Tags: slightly more padding for tap targets */
+  .lc-tag {
+    font-size: 9px;
+    padding: 2px 7px;
+  }
+
+  /* Pipeline running: full padding reduction */
+  .dashboard-page .pipeline-running {
+    padding: 14px;
+  }
+
+  .dashboard-page .running-company {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  /* Log: smaller font, less height */
+  .dashboard-page .running-log {
+    font-size: 10px;
+    max-height: 220px;
+    padding: 10px;
+  }
+
+  /* Stack time on its own line on very small screens */
+  .log-line {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .log-time {
+    order: -1;   /* always first */
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   TABLET (601px – 900px): keep pills in a row with scroll
+────────────────────────────────────────────────────────────────── */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+  /* Log line stays inline but wraps gracefully */
+  .log-line {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  /* Lead card: normal size but allow full height */
+  .lead-card {
+    padding: 12px 14px;
+  }
+}

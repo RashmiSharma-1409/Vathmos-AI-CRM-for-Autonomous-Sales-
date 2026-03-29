@@ -1,0 +1,493 @@
+/* ══════════════════════════════════════════════════════════════════
+   VATHMOS — Mobile Responsive Patch
+   Add this at the bottom of style.css AND dashboard.css
+   (or link as a separate stylesheet after both)
+
+   Covers:
+   - Dashboard two-panel layout → stacked on mobile
+   - Header overflow & crowding
+   - Step pills horizontal scroll
+   - Cards grid collapsing
+   - Hero section padding
+   - Search chips overflow
+   - Touch target sizes
+   - Nav drawer polish
+   - Running steps pill scroll
+   ══════════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────────────────────────────
+   GLOBAL MOBILE BASE
+────────────────────────────────────────────────────────────────── */
+
+/* Prevent horizontal overflow everywhere */
+html, body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%; /* Prevent iOS font zoom on rotate */
+}
+
+/* Ensure all images are fluid */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Minimum tap target size (Apple HIG: 44px) */
+button, a, .chip, .panel-tab, .drawer-link, .nav-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Exception: chips can be smaller but need good padding */
+.chip {
+  min-height: 36px;
+  padding: 6px 14px;
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   DASHBOARD — TABLET (max-width: 900px)
+   Already partially handled; filling the gaps
+────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+
+  /* Stack layout vertically */
+  .dashboard-page .dashboard-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 16px;
+  }
+
+  /* Left panel: fixed height so it doesn't take full screen */
+  .dashboard-page .panel-left {
+    height: auto;
+    max-height: 45vh;
+    min-height: 280px;
+  }
+
+  /* Right panel: enough room for cards */
+  .dashboard-page .panel-right {
+    height: auto;
+    min-height: 50vh;
+  }
+
+  /* Shrink header padding */
+  .dash-header-inner {
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  /* Hide the center title on tablet — it crowds the header */
+  .dash-header-center {
+    display: none;
+  }
+
+  /* Main padding */
+  .dash-main {
+    padding: 12px 16px 32px;
+  }
+
+  /* Running steps — allow horizontal scroll instead of wrapping badly */
+  .dashboard-page .running-steps {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+  .dashboard-page .running-steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Step pills: don't shrink */
+  .dashboard-page .step-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* Search chips: horizontal scroll on tablet too */
+  .dashboard-page .search-chips {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .dashboard-page .search-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dashboard-page .chip {
+    flex-shrink: 0;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   DASHBOARD — MOBILE (max-width: 600px)
+────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+
+  /* Header: only show logo + theme toggle + back icon */
+  .dash-back-btn span {
+    display: none;
+  }
+  .dash-back-btn {
+    padding: 8px;
+    min-height: 40px;
+    min-width: 40px;
+    justify-content: center;
+  }
+
+  /* Shrink the logo wordmark on very small screens */
+  .logo-wordmark {
+    font-size: 18px;
+  }
+  .logo-mark--nav {
+    width: 36px;
+    height: 36px;
+  }
+  .logo-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Nav status: hide on small mobile */
+  .dash-header-right .nav-status {
+    display: none;
+  }
+
+  /* Cards: single column */
+  .dashboard-page .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Card padding tighter on mobile */
+  .dashboard-page .card {
+    padding: 16px;
+  }
+
+  /* Results header: stack vertically */
+  .dashboard-page .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .dashboard-page .results-company-name {
+    font-size: 18px;
+  }
+
+  .dashboard-page .rerun-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  /* Pipeline running: tighter padding */
+  .dashboard-page .pipeline-running {
+    padding: 16px;
+  }
+
+  .dashboard-page .running-company {
+    font-size: 18px;
+  }
+
+  /* Running log: smaller font, less height */
+  .dashboard-page .running-log {
+    font-size: 11px;
+    max-height: 260px;
+    padding: 12px;
+  }
+
+  /* Left panel search section */
+  .dashboard-page .search-section {
+    padding: 12px 14px 10px;
+  }
+
+  /* Leads list: comfortable padding */
+  .dashboard-page .leads-list {
+    padding: 8px;
+  }
+
+  /* Results cards padding */
+  .dashboard-page .results-cards {
+    padding: 16px;
+  }
+
+  /* Churn metrics: wrap on tiny screens */
+  .dashboard-page .churn-metrics {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Timeline: tighten up */
+  .dashboard-page .timeline-section {
+    margin-top: 16px;
+    padding-top: 16px;
+  }
+
+  /* Score ring: shrink slightly */
+  .dashboard-page .score-ring {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Empty state: scale down the graphic */
+  .dashboard-page .empty-graphic {
+    width: 90px;
+    height: 90px;
+  }
+  .dashboard-page .eg-core {
+    font-size: 13px;
+  }
+  .dashboard-page .empty-title {
+    font-size: 16px;
+  }
+  .dashboard-page .empty-sub {
+    font-size: 13px;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   LANDING PAGE — HERO (max-width: 768px)
+────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+
+  /* Hero: reduce top padding (navbar is 72px, give it room) */
+  .hero {
+    padding: 100px 20px 60px;
+    min-height: auto;
+  }
+
+  /* Reduce floating shapes so they don't crowd text */
+  .shape-1, .shape-2, .shape-4, .shape-6, .shape-8 {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+  .shape-3, .shape-5, .shape-7 {
+    display: none;
+  }
+
+  /* Hero badge */
+  .hero-badge {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+
+  /* Hero headline */
+  .hero-title {
+    font-size: clamp(28px, 8vw, 52px);
+    line-height: 1.15;
+  }
+
+  /* Hero sub */
+  .hero-sub {
+    font-size: 15px;
+    padding: 0 8px;
+  }
+
+  /* Hero CTA buttons: stack vertically */
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .hero-actions .cta-primary,
+  .hero-actions .cta-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+
+  /* Hero social proof: wrap */
+  .hero-social-proof {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  /* Hero logo showcase: shrink */
+  .hero-logo-showcase {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 24px;
+  }
+  .hero-logo-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Feature cards grid: single column */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Section padding */
+  .features-section,
+  .dashboard-cta-section,
+  .testimonials-section {
+    padding: 60px 0 60px;
+  }
+
+  /* Section headers */
+  .section-label {
+    font-size: 11px;
+  }
+  .section-title {
+    font-size: clamp(22px, 6vw, 38px);
+  }
+  .section-sub {
+    font-size: 14px;
+    padding: 0 8px;
+  }
+
+  /* CTA card: tighter padding on mobile */
+  .cta-card-inner {
+    padding: 32px 24px;
+  }
+  .cta-card-title {
+    font-size: 18px;
+  }
+
+  /* Testimonial slider */
+  .testimonial-slider {
+    padding: 0 16px;
+  }
+  .slider-controls {
+    gap: 12px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 60px 0 32px;
+  }
+  .footer-inner {
+    padding: 0 20px;
+  }
+  .footer-top {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .footer-links-group {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .footer-brand {
+    max-width: 100%;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   LANDING PAGE — SMALL MOBILE (max-width: 480px)
+────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+
+  /* Nav inner */
+  .nav-inner {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  /* Logo wordmark: hide on tiny screens if needed */
+  .logo-wordmark {
+    font-size: 17px;
+  }
+
+  /* Hero more compact */
+  .hero {
+    padding: 88px 16px 48px;
+  }
+
+  /* Feature card padding */
+  .feature-card {
+    padding: 20px 18px;
+  }
+
+  /* Score ring container in cards */
+  .score-ring-wrap {
+    transform: scale(0.9);
+    transform-origin: center;
+  }
+
+  /* Timeline: tighten */
+  .tl-event {
+    padding-left: 12px;
+    margin-bottom: 12px;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   UTILITY: Safe overflow for tables
+   (wrap any <table> in .table-wrapper in HTML)
+────────────────────────────────────────────────────────────────── */
+
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius);
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   UTILITY: Prevent iOS input zoom (inputs < 16px trigger zoom)
+────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="search"],
+  input[type="email"],
+  textarea,
+  select {
+    font-size: 16px; /* iOS won't zoom if >= 16px */
+  }
+
+  /* Specifically for the dashboard search */
+  .dashboard-page .search-input {
+    font-size: 16px;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────
+   UTILITY: Reduce motion for accessibility
+────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .logo-glow-ring,
+  .hero-logo-img,
+  .shape,
+  .eg-ring {
+    animation: none;
+  }
+}
