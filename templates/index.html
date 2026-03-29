@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VATHMOS — Intelligent Sales Agent | AI-Powered CRM</title>
+  <meta name="description" content="VATHMOS is an AI-powered sales intelligence platform that automates lead scoring, outreach, deal analysis, churn prediction, and retention workflows."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="/static/js/theme.js"></script>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- HEADER — Elegant scroll-aware navbar          -->
+  <!-- ══════════════════════════════════════════════ -->
+  <header class="nav-header" id="navHeader">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" id="navLogo">
+        <div class="logo-mark logo-mark--nav">
+          <div class="logo-glow-ring"></div>
+          <img src="/static/images/vathmos-logo.png" alt="VATHMOS" class="logo-img" />
+        </div>
+        <span class="logo-wordmark">VATH<span class="logo-ai">MOS</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="/dashboard" class="nav-link">Dashboard</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="nav-status">
+          <div class="status-dot" id="statusDot"></div>
+          <span class="status-text" id="statusText">Ready</span>
+        </div>
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="/dashboard" class="nav-cta" id="navCta">Launch Dashboard</a>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile drawer -->
+    <div class="nav-drawer" id="navDrawer">
+      <a href="#hero" class="drawer-link">Home</a>
+      <a href="#features" class="drawer-link">Features</a>
+      <a href="/dashboard" class="drawer-link">Dashboard</a>
+      <a href="#testimonials" class="drawer-link">Testimonials</a>
+      <a href="#contact" class="drawer-link">Contact</a>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- HERO — Shape Landing with floating shapes     -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <!-- Floating shapes background -->
+    <div class="hero-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+      <div class="shape shape-6"></div>
+      <div class="shape shape-7"></div>
+      <div class="shape shape-8"></div>
+    </div>
+
+    <!-- Grid pattern overlay -->
+    <div class="hero-grid-pattern"></div>
+
+    <div class="hero-content">
+      <!-- Hero Logo Showcase -->
+      <div class="hero-logo-showcase" id="heroLogoShowcase">
+        <div class="hero-logo-glow"></div>
+        <div class="hero-logo-ring hero-logo-ring-1"></div>
+        <div class="hero-logo-ring hero-logo-ring-2"></div>
+        <img src="/static/images/vathmos-logo.png" alt="VATHMOS" class="hero-logo-img" />
+      </div>
+      <div class="hero-badge" id="heroBadge">
+        <span class="badge-dot"></span>
+        <span>AI-Powered Sales Intelligence</span>
+      </div>
+      <h1 class="hero-title" id="heroTitle">
+        Close More Deals
+        <br/>
+        <span class="hero-gradient-text">With AI Agents</span>
+      </h1>
+      <p class="hero-subtitle" id="heroSubtitle">
+        VATHMOS runs a full 7-step intelligent sales pipeline — from lead scoring to churn prediction — in seconds, not days.
+      </p>
+      <div class="hero-ctas">
+        <a href="/dashboard" class="cta-primary" id="ctaPrimary">
+          <span>Open Dashboard</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#features" class="cta-secondary" id="ctaSecondary">
+          <span>See Features</span>
+        </a>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric">
+          <div class="metric-value" data-count="3.5">3.5h</div>
+          <div class="metric-label">Hours Saved / Lead</div>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric">
+          <div class="metric-value" data-count="18">18%</div>
+          <div class="metric-label">Conversion Lift</div>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric">
+          <div class="metric-value" data-count="4">4 Days</div>
+          <div class="metric-label">Sales Cycle Reduction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- FEATURES — Modern grid layout                 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section class="features" id="features">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Features</span>
+        <h2 class="section-title">6 AI Agents, One Unified Pipeline</h2>
+        <p class="section-subtitle">Every agent is specialized. Together, they form an unstoppable sales intelligence engine.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card" data-delay="0">
+          <div class="feature-icon" style="--icon-bg: var(--indigo-soft); --icon-color: var(--indigo);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="feature-title">Lead Scoring Agent</h3>
+          <p class="feature-desc">AI analyzes funding events, leadership hires, and market signals to score prospects 0–100 with reasoning.</p>
+        </div>
+        <div class="feature-card" data-delay="1">
+          <div class="feature-icon" style="--icon-bg: var(--purple-soft); --icon-color: var(--purple);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 8l10 6 10-6"/></svg>
+          </div>
+          <h3 class="feature-title">Outreach Agent</h3>
+          <p class="feature-desc">Crafts personalized cold emails based on the lead's event, industry, and engagement signals.</p>
+        </div>
+        <div class="feature-card" data-delay="2">
+          <div class="feature-icon" style="--icon-bg: var(--emerald-soft); --icon-color: var(--emerald);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <h3 class="feature-title">Deal Intelligence</h3>
+          <p class="feature-desc">Analyzes deal stage, timeline, and engagement patterns to flag risks and recommend next actions.</p>
+        </div>
+        <div class="feature-card" data-delay="3">
+          <div class="feature-icon" style="--icon-bg: var(--orange-soft); --icon-color: var(--orange);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="feature-title">Competitive Battlecards</h3>
+          <p class="feature-desc">Auto-generates competitive defense strategies with talking points when deal risk is high.</p>
+        </div>
+        <div class="feature-card" data-delay="4">
+          <div class="feature-icon" style="--icon-bg: var(--red-soft); --icon-color: var(--red);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3 class="feature-title">Churn Prediction</h3>
+          <p class="feature-desc">Predicts churn probability using usage, sentiment, and activity data with actionable interventions.</p>
+        </div>
+        <div class="feature-card" data-delay="5">
+          <div class="feature-icon" style="--icon-bg: var(--teal-soft); --icon-color: var(--teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="feature-title">Retention Agent</h3>
+          <p class="feature-desc">Auto-triggers personalized win-back emails and intervention workflows for at-risk customers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- DASHBOARD CTA — Links to the dedicated page   -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section class="dashboard-cta-section" id="dashboardCta">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Dashboard</span>
+        <h2 class="section-title">AI Sales Pipeline</h2>
+        <p class="section-subtitle">Select a prospect and watch the 7-step pipeline run in real-time.</p>
+      </div>
+      <div class="cta-card">
+        <div class="cta-card-inner">
+          <div class="cta-card-graphic">
+            <div class="eg-ring eg-ring-1"></div>
+            <div class="eg-ring eg-ring-2"></div>
+            <div class="eg-ring eg-ring-3"></div>
+            <div class="eg-core">AI</div>
+          </div>
+          <h3 class="cta-card-title">Ready to run the pipeline?</h3>
+          <p class="cta-card-desc">Open the full dashboard to search 40 prospects across 4 industries and run the complete AI agent pipeline — from lead scoring to retention.</p>
+          <a href="/dashboard" class="cta-primary" id="dashCta">
+            <span>Open Dashboard</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- TESTIMONIALS — Animated columns + slider      -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-tag">Testimonials</span>
+        <h2 class="section-title">Loved by Sales Teams</h2>
+        <p class="section-subtitle">See what industry leaders say about VATHMOS.</p>
+      </div>
+
+      <!-- Testimonial Columns -->
+      <div class="testimonial-columns" id="testimonialColumns">
+        <div class="testimonial-col testimonial-col-up">
+          <div class="testimonial-card">
+            <div class="tc-quote">"VATHMOS scored and qualified 200+ leads in under 10 minutes. Our SDRs used to spend 3 full days on that."</div>
+            <div class="tc-author">
+              <div class="tc-avatar" style="--avatar-bg: var(--indigo-soft); --avatar-color: var(--indigo);">JM</div>
+              <div class="tc-info">
+                <div class="tc-name">Jessica Miller</div>
+                <div class="tc-role">VP Sales · NovaTech</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-quote">"The churn prediction agent identified 12 at-risk accounts we had no idea about. Saved us $340K in ARR."</div>
+            <div class="tc-author">
+              <div class="tc-avatar" style="--avatar-bg: var(--emerald-soft); --avatar-color: var(--emerald);">RP</div>
+              <div class="tc-info">
+                <div class="tc-name">Raj Patel</div>
+                <div class="tc-role">Head of CS · CloudPilot</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-quote">"The competitive battlecards literally helped us close a deal we were losing. Game-changing for enterprise sales."</div>
+            <div class="tc-author">
+              <div class="tc-avatar" style="--avatar-bg: var(--purple-soft); --avatar-color: var(--purple);">SK</div>
+              <div class="tc-info">
+                <div class="tc-name">Sarah Kim</div>
+                <div class="tc-role">AE · DataBridge</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-col testimonial-col-down">
+          <div class="testimonial-card">
+            <div class="tc-quote">"We integrated VATHMOS into our workflow and saw an 18% jump in conversion rate within the first month."</div>
+            <div class="tc-author">
+              <div class="tc-avatar" style="--avatar-bg: var(--orange-soft); --avatar-color: var(--orange);">AL</div>
+              <div class="tc-info">
+                <div class="tc-name">Alex Liu</div>
+                <div class="tc-role">CRO · FinVault</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-quote">"The email personalization is phenomenal. Reply rates went from 3% to 19% — better than any copywriting tool I've tried."</div>
+            <div class="tc-author">
+              <div class="tc-avatar" style="--avatar-bg: var(--red-soft); --avatar-color: var(--red);">MD</div>
+              <div class="tc-info">
+                <div class="tc-name">Maria Diaz</div>
+                <div class="tc-role">SDR Manager · PayStream</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-quote">"Finally, a tool that understands our ICP. The lead scoring is scarily accurate based on real trigger events."</div>
+            <div class="tc-author">
+              <div class="tc-avatar" style="--avatar-bg: var(--teal-soft); --avatar-color: var(--teal);">CT</div>
+              <div class="tc-info">
+                <div class="tc-name">Chris Thompson</div>
+                <div class="tc-role">Founder · TaskFlow</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-col testimonial-col-up">
+          <div class="testimonial-card">
+            <div class="tc-quote">"The retention agent saved 3 major accounts last quarter. The ROI is insane."</div>
+            <div class="tc-author">
+              <div class="tc-avatar" style="--avatar-bg: var(--indigo-soft); --avatar-color: var(--indigo);">LN</div>
+              <div class="tc-info">
+                <div class="tc-name">Lisa Nguyen</div>
+                <div class="tc-role">CEO · OrbitCRM</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-quote">"Deal intelligence flagged a stalled deal at the demo stage. We adjusted our approach and closed it within a week."</div>
+            <div class="tc-author">
+              <div class="tc-avatar" style="--avatar-bg: var(--purple-soft); --avatar-color: var(--purple);">DW</div>
+              <div class="tc-info">
+                <div class="tc-name">David Wang</div>
+                <div class="tc-role">Sales Lead · RetailIQ</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="tc-quote">"VATHMOS is like having 6 extra team members that never sleep. Best investment our sales team has made."</div>
+            <div class="tc-author">
+              <div class="tc-avatar" style="--avatar-bg: var(--emerald-soft); --avatar-color: var(--emerald);">EB</div>
+              <div class="tc-info">
+                <div class="tc-name">Elena Brooks</div>
+                <div class="tc-role">Dir. Revenue · WealthRoute</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial Slider -->
+      <div class="testimonial-slider" id="testimonialSlider">
+        <div class="slider-track" id="sliderTrack">
+          <div class="slider-card active" data-index="0">
+            <div class="slider-quote">"VATHMOS replaced 4 different tools for us. Lead scoring, email sequencing, deal analytics, and retention — all in one intelligent pipeline."</div>
+            <div class="slider-author">
+              <div class="slider-avatar" style="--avatar-bg: var(--indigo-soft); --avatar-color: var(--indigo);">MR</div>
+              <div class="slider-info">
+                <div class="slider-name">Michael Roberts</div>
+                <div class="slider-role">CTO · StreamlineHQ</div>
+              </div>
+            </div>
+          </div>
+          <div class="slider-card" data-index="1">
+            <div class="slider-quote">"The adaptive follow-up emails are brilliant. They actually reference previous engagement signals. Our prospects think we have a dedicated outbound team."</div>
+            <div class="slider-author">
+              <div class="slider-avatar" style="--avatar-bg: var(--purple-soft); --avatar-color: var(--purple);">AH</div>
+              <div class="slider-info">
+                <div class="slider-name">Amanda Hughes</div>
+                <div class="slider-role">Growth Lead · SyncLayer</div>
+              </div>
+            </div>
+          </div>
+          <div class="slider-card" data-index="2">
+            <div class="slider-quote">"In 90 days with VATHMOS: 40% more qualified meetings, 22% faster sales cycle, and our team actually loves using it."</div>
+            <div class="slider-author">
+              <div class="slider-avatar" style="--avatar-bg: var(--emerald-soft); --avatar-color: var(--emerald);">TJ</div>
+              <div class="slider-info">
+                <div class="slider-name">Tom Jackson</div>
+                <div class="slider-role">VP Revenue · PipelineOS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn slider-prev" id="sliderPrev" aria-label="Previous testimonial">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M12 5L7 10L12 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="slider-dots" id="sliderDots">
+            <button class="slider-dot active" data-index="0" aria-label="Go to testimonial 1"></button>
+            <button class="slider-dot" data-index="1" aria-label="Go to testimonial 2"></button>
+            <button class="slider-dot" data-index="2" aria-label="Go to testimonial 3"></button>
+          </div>
+          <button class="slider-btn slider-next" id="sliderNext" aria-label="Next testimonial">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M8 5L13 10L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- FOOTER — Hover-animated footer                -->
+  <!-- ══════════════════════════════════════════════ -->
+  <footer class="footer" id="contact">
+    <div class="footer-glow"></div>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-mark logo-mark--footer">
+              <img src="/static/images/vathmos-logo.png" alt="VATHMOS" class="logo-img" />
+            </div>
+            <span class="logo-wordmark">VATH<span class="logo-ai">MOS</span></span>
+          </div>
+          <p class="footer-tagline">AI-powered sales intelligence for modern revenue teams.</p>
+        </div>
+        <div class="footer-links-group">
+          <div class="footer-col">
+            <h4 class="footer-col-title">Product</h4>
+            <a href="#features" class="footer-link">Features</a>
+            <a href="/dashboard" class="footer-link">Dashboard</a>
+            <a href="#" class="footer-link">Integrations</a>
+            <a href="#" class="footer-link">API</a>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Company</h4>
+            <a href="#" class="footer-link">About</a>
+            <a href="#" class="footer-link">Careers</a>
+            <a href="#" class="footer-link">Blog</a>
+            <a href="#" class="footer-link">Press</a>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">Resources</h4>
+            <a href="#" class="footer-link">Documentation</a>
+            <a href="#" class="footer-link">Help Center</a>
+            <a href="#" class="footer-link">Community</a>
+            <a href="#testimonials" class="footer-link">Testimonials</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 VATHMOS. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-link" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

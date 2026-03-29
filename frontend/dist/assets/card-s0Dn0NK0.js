@@ -1,0 +1,1 @@
+import{j as e,e as r}from"./index-BO-Uhd5N.js";function a({className:s="",children:n}){return e.jsxs("section",{className:r("glass-panel surface-ring relative overflow-hidden rounded-[28px] p-5 sm:p-6",s),children:[e.jsx("div",{className:"pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"}),n]})}export{a as C};

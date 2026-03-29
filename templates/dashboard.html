@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — VATHMOS | AI Sales Pipeline</title>
+  <meta name="description"
+    content="Run the full 7-step AI sales pipeline: lead scoring, outreach, deal analysis, competitive battlecards, churn prediction, and retention workflows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="/static/js/theme.js"></script>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="/static/css/dashboard.css" />
+</head>
+
+<body class="dashboard-page">
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- DASHBOARD HEADER                              -->
+  <!-- ══════════════════════════════════════════════ -->
+  <header class="dash-header" id="dashHeader">
+    <div class="dash-header-inner">
+      <a href="/" class="nav-logo" id="dashLogo">
+        <div class="logo-mark logo-mark--nav">
+          <div class="logo-glow-ring"></div>
+          <img src="/static/images/vathmos-logo.png" alt="VATHMOS" class="logo-img" />
+        </div>
+        <span class="logo-wordmark">VATH<span class="logo-ai">MOS</span></span>
+      </a>
+
+      <div class="dash-header-center">
+        <h1 class="dash-page-title">AI Sales Pipeline</h1>
+      </div>
+
+      <div class="dash-header-right">
+        <div class="nav-status">
+          <div class="status-dot" id="statusDot"></div>
+          <span class="status-text" id="statusText">Ready</span>
+        </div>
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="/" class="dash-back-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          <span>Back to Home</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- MAIN DASHBOARD LAYOUT                         -->
+  <!-- ══════════════════════════════════════════════ -->
+  <main class="dash-main" id="dashMain">
+    <div class="dashboard-layout">
+
+      <!-- LEFT PANEL: Search + Leads -->
+      <aside class="panel-left" id="panelLeft">
+        <div class="search-section">
+          <div class="panel-tabs">
+            <button class="panel-tab active" onclick="switchMode('prospects')">Prospects</button>
+            <button class="panel-tab" onclick="switchMode('customers')">Customers</button>
+          </div>
+          <div class="search-wrap" id="searchWrap">
+            <svg class="search-icon" viewBox="0 0 20 20" fill="none">
+              <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5" />
+              <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search SaaS, FinTech, Series A..."
+              autocomplete="off" />
+            <div class="search-loader" id="searchLoader"></div>
+          </div>
+          <div class="search-chips" id="searchChips">
+            <button class="chip active" onclick="quickSearch('SaaS')">SaaS</button>
+            <button class="chip" onclick="quickSearch('FinTech')">FinTech</button>
+            <button class="chip" onclick="quickSearch('HealthTech')">HealthTech</button>
+            <button class="chip" onclick="quickSearch('E-commerce')">E-commerce</button>
+            <button class="chip" onclick="quickSearch('Series A')">Series A</button>
+            <button class="chip" onclick="quickSearch('Expansion')">Expansion</button>
+          </div>
+          <div class="results-count" id="resultsCount"></div>
+        </div>
+
+        <div class="leads-list" id="leadsList">
+          <div class="empty-state">
+            <div class="empty-icon">⟡</div>
+            <p>Search for prospects above<br />or select an industry</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT PANEL: Pipeline Results -->
+      <section class="panel-right" id="panelRight">
+        <!-- Default empty state -->
+        <div class="results-empty" id="resultsEmpty">
+          <div class="results-empty-inner">
+            <div class="empty-graphic">
+              <div class="eg-ring eg-ring-1"></div>
+              <div class="eg-ring eg-ring-2"></div>
+              <div class="eg-ring eg-ring-3"></div>
+              <div class="eg-core">AI</div>
+            </div>
+            <h2 class="empty-title">Select a prospect to run the pipeline</h2>
+            <p class="empty-sub">Search for leads on the left, click one to trigger<br />the full 7-step AI sales
+              pipeline</p>
+          </div>
+        </div>
+
+        <!-- Pipeline running state -->
+        <div class="pipeline-running" id="pipelineRunning" style="display:none">
+          <div class="running-header">
+            <div class="running-company" id="runningCompany">—</div>
+            <div class="running-steps" id="runningSteps">
+            </div>
+          </div>
+          <div class="running-log" id="runningLog"></div>
+        </div>
+
+        <!-- Results cards -->
+        <div class="results-cards" id="resultsCards" style="display:none">
+          <div class="results-header">
+            <div class="results-company-name" id="resultsCompanyName"></div>
+            <div class="results-meta" id="resultsMeta"></div>
+            <button class="rerun-btn" id="rerunBtn">↻ Run Again</button>
+          </div>
+
+          <div class="cards-grid">
+            <!-- Card 1: Lead Score -->
+            <div class="card card-score" id="cardScore">
+              <div class="card-header">
+                <span class="card-label">LEAD INTELLIGENCE</span>
+                <span class="card-badge" id="scoreBadge">—</span>
+              </div>
+              <div class="score-ring-wrap">
+                <svg class="score-ring" viewBox="0 0 120 120">
+                  <circle class="ring-bg" cx="60" cy="60" r="50" />
+                  <circle class="ring-fill" id="ringFill" cx="60" cy="60" r="50" stroke-dasharray="314"
+                    stroke-dashoffset="314" />
+                </svg>
+                <div class="score-center">
+                  <div class="score-number" id="scoreNumber">—</div>
+                  <div class="score-label">score</div>
+                </div>
+              </div>
+              <div class="card-reason" id="scoreReason"></div>
+            </div>
+
+            <!-- Card 2: Email 1 -->
+            <div class="card card-email" id="cardEmail">
+              <div class="card-header">
+                <span class="card-label">INITIAL OUTREACH</span>
+                <span class="card-tag">Email 1</span>
+              </div>
+              <div class="email-subject" id="emailSubject1"></div>
+              <div class="email-body" id="emailBody1"></div>
+              <div class="engagement-bar" id="engagementBar1"></div>
+            </div>
+
+            <!-- Card 3: Follow-up Email -->
+            <div class="card card-email" id="cardFollowup">
+              <div class="card-header">
+                <span class="card-label">ADAPTIVE FOLLOW-UP</span>
+                <span class="card-tag tag-adapted">Adapted</span>
+              </div>
+              <div class="email-subject" id="emailSubject2"></div>
+              <div class="email-body" id="emailBody2"></div>
+              <div class="engagement-bar" id="engagementBar2"></div>
+            </div>
+
+            <!-- Card 4: Deal Intelligence -->
+            <div class="card card-deal" id="cardDeal">
+              <div class="card-header">
+                <span class="card-label">DEAL INTELLIGENCE</span>
+                <span class="card-badge" id="dealBadge">—</span>
+              </div>
+              <div class="deal-risk-bar-wrap">
+                <div class="deal-risk-bar" id="dealRiskBar"></div>
+              </div>
+              <div class="deal-confidence" id="dealConfidence"></div>
+              <div class="deal-issue" id="dealIssue"></div>
+              <div class="deal-action" id="dealAction"></div>
+            </div>
+
+            <!-- Card 5: Competitive Battlecard -->
+            <div class="card card-competitive" id="cardCompetitive">
+              <div class="card-header">
+                <span class="card-label">COMPETITIVE BATTLECARD</span>
+                <span class="card-tag">Deal Defense</span>
+              </div>
+              <div class="deal-action" id="competitiveStrategy"></div>
+              <ul class="battlecard-points" id="competitivePoints"></ul>
+            </div>
+
+            <!-- Card 6: Churn Prediction -->
+            <div class="card card-churn" id="cardChurn">
+              <div class="card-header">
+                <span class="card-label">CHURN PREDICTION</span>
+                <span class="card-badge" id="churnBadge">—</span>
+              </div>
+              <div class="churn-metrics">
+                <div class="churn-metric">
+                  <div class="cm-value" id="churnScore">—</div>
+                  <div class="cm-label">Churn Score</div>
+                </div>
+                <div class="churn-metric">
+                  <div class="cm-value" id="recoveryProb">—</div>
+                  <div class="cm-label">Recovery %</div>
+                </div>
+                <div class="churn-metric">
+                  <div class="cm-value" id="churnUrgency">—</div>
+                  <div class="cm-label">Urgency</div>
+                </div>
+              </div>
+              <div class="churn-narrative" id="churnNarrative"></div>
+              <div class="churn-intervention" id="churnIntervention"></div>
+            </div>
+
+            <!-- Card 7: Retention -->
+            <div class="card card-retention" id="cardRetention">
+              <div class="card-header">
+                <span class="card-label">RETENTION INTERVENTION</span>
+                <span class="card-tag tag-auto">Auto-triggered</span>
+              </div>
+              <div class="email-subject" id="retentionSubject"></div>
+              <div class="email-body" id="retentionBody"></div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="timeline-section">
+            <div class="timeline-label">PIPELINE TIMELINE</div>
+            <div class="timeline-track" id="timelineTrack"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/static/js/dashboard.js"></script>
+</body>
+
+</html>
