@@ -175,5 +175,5 @@ This project was built for the **ET Hackathon**. All rights reserved © Rajeev K
 
 ## 👤 Author
 
-**Rajeev Kulkarni**
-- GitHub: [@Rajeevkulkarni1111](https://github.com/Rajeevkulkarni1111)
+**Rashmi Sharma**
+- GitHub: [@RashmiSharma-1409](https://github.com/RashmiSharma-1409)
