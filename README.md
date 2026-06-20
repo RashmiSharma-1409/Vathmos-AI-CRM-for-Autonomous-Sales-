@@ -79,7 +79,7 @@ Vathmos_ET/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Rajeevkulkarni1111/Vathmos_ET.git
+git clone https://github.com/RashmiSharma-1409/Vathmos_ET.git
 cd Vathmos_ET
 ```
 
