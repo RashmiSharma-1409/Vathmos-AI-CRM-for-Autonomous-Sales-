@@ -169,7 +169,7 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 ## 📄 License
 
-This project was built for the **ET Hackathon**. All rights reserved © Rajeev Kulkarni.
+This project was built for the **ET Hackathon**. All rights reserved © Rashmi Sharma.
 
 ---
 
